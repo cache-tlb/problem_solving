@@ -1,0 +1,78 @@
+﻿1554
+3160
+1189
+
+2351
+2433
+
+1713 
+2634 bfs?
+2814 surprising strings
+1607 varacious steve
+3329 one person game
+1066 square ice
+2420 calendar
+2725
+2591
+3470
+3228
+3057
+3430
+2059**2set
+3167
+1180
+3191
+1168
+1292
+1086
+1558Euro Efficiency
+1489
+1666
+2969
+2562
+1847
+3395 最长子串
+3315 机器人
+2836 Number Puzzle
+3159 月老
+1880 分割差最小的子集
+2892 Wavelet Compression
+2050 Flip Game
+2322 支付宝
+1395 Door Man
+3311 上下文无关语言
+2100 Seeding
+1710 The Snail
+2529 A+B in Hogwarts
+1563 Pearls
+2740 树
+3336 friend number
+3353 Chess Board
+3365 连续整数
+----------------------------------------------------------------
+
+finished:
+2136 longest ordered subsequence
+3168
+1354 Extended Lights Off
+1909 拼正方形---DFS
+1711 Sum It Up---DFS
+
+----------------------------------------------------------------
+
+TODO:
+1894**搬家大冒险
+3123* Subsequence
+2202 Alpha Code
+2828 Auto Spell Corrector
+3471 Most Powerful
+3305**最大不相交子集数 --最大流？？
+^^3509
+3507 递归画图
+
+3332 哈密顿回路
+3321 圈
+2868
+1024 日历游戏
+1906
+1217

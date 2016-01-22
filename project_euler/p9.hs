@@ -1,0 +1,1 @@
+xs = [a*b*c | a <- [1..333], b <- [a..500], let ss = (a*a + b*b); c = floor $ sqrt $ fromInteger ss, c*c == ss, a + b + c == 1000 ]
