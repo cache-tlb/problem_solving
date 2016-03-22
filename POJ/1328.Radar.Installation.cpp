@@ -1,3 +1,14 @@
+// for each island, there is a range of location for radar installation to cover it.
+// thus the problem is equivalent to another problem: 
+// find the least number of points on the axis so that for any range there is a point in it.
+// we can use greedy algorithm to solve it.
+// first sort the ranges based on their lower bounds.
+// for the first range, we should put a point in it. 
+// we also want this point falls in other ranges, as many as possible.
+// so we move the position of the point, if the upper bound of the next range is smaller than that point
+// the point is moved to that it can fall in both range.
+// but if the lower bound of the next range is larger than current point, a new point is needed.
+
 #include <cstdio>
 #include <cmath>
 #include <algorithm>
