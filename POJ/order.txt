@@ -1,4 +1,3 @@
-1005 I Think I Need a Houseboat 0.43 38343 88354
 1006 Biorhythms 0.31 36150 115300
 1007 DNA Sorting 0.4 34009 84442
 1001 Exponentiation 0.24 33788 138161
