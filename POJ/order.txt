@@ -1,4 +1,3 @@
-1163 The Triangle 0.6 23032 38362
 1273 Drainage Ditches 0.38 22044 57304
 1050 To the Max 0.53 21905 41297
 1008 Maya Calendar 0.3 20688 67112
