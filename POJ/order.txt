@@ -1,4 +1,3 @@
-1050 To the Max 0.53 21905 41297
 1008 Maya Calendar 0.3 20688 67112
 3468 A Simple Problem with Integers 0.3 20163 65502
 2388 Who's in the Middle 0.58 18859 32355
