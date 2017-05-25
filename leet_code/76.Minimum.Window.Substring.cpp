@@ -10,12 +10,6 @@ public:
             todo_list[t[i]]++;
             target[t[i]]++;
         }
-        std::vector<int> check_list;
-        for (int i = 0; i < 256; i++) {
-            if (is_t[i]) {
-                check_list.push_back(i);
-            }
-        }
 
         int head = 0;
         while (head < s.length() && !is_t[s[head]]) head++;
