@@ -10,8 +10,8 @@ std::vector<std::vector<int> > dist;
 
 int main() {
     // freopen("input.txt", "r", stdin);
-    freopen("C-large.in", "r", stdin);
-    // freopen("C-large.out", "w", stdout);
+    freopen("C-large-practice.in", "r", stdin);
+    freopen("C-large.out", "w", stdout);
     int T;
     scanf("%d", &T);
     for (int t = 1; t <= T; t++) {
@@ -53,20 +53,18 @@ int main() {
         }
         
         double res = 0;
-        for (int k = 1; k <= P; k++) {
-            double x = 0;
-            x = (p0*sumd0)/double(N-1);
-            x += (pnz*sumd_nz)/double(N-1);
-            // for (int i = 0; i < N; i++) {
-                // x += p[i]*sum_d[i]/double(N-1);
-            // }
-            res += x;
-            // for (int i = 0; i < N; i++) {
-                // p[i] = (1.0-p[i])/double(N-1);
-            // }
-            p0 = (1-p0)/double(N-1);
-            pnz = (1-pnz)/double(N-1);
-        }
+        // for (int k = 1; k <= P; k++) {
+        //     double x = 0;
+        //     x = (p0*sumd0)/double(N-1);
+        //     x += (pnz*sumd_nz)/double(N-1);
+        //     res += x;
+        //     p0 = (1-p0)/double(N-1);
+        //     pnz = (1-pnz)/double(N-1);
+        // }
+        double oneminusn = 1./double(1-N);
+        double f = (pow(oneminusn, double(P)) - 1.0)/(oneminusn - 1);
+        res += (p0*f - (f-P)/double(N))*sumd0/double(N-1);
+        res += (pnz*f - (f-P)/double(N))*sumd_nz/double(N-1);
         printf("Case #%d: %llf\n", t, res);
     }
     return 0;
