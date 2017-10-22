@@ -3,74 +3,76 @@
 
 using namespace std;
 
-bool vis[128];
-int red[128], blue[128];
-long long dist[128][128];
-long long len[128];
-
+int f[45][45][45][45], s[45][45][45][45];
+int p[45][45];
 
 int main()
 {
-    freopen ("B-large.in", "r", stdin);
-    freopen ("B-large.out", "w", stdout);
-    int n, times;
-    long long ans;
-    int cur;
+    // freopen ("C-small-attempt0.in", "r", stdin);
+    // freopen ("C-small-attempt0.out", "w", stdout);
+    freopen ("C-large.in", "r", stdin);
+    freopen ("C-large.out", "w", stdout);
+    int n, m;
+    int times;
     scanf("%d", &times);
     for(int iter = 1; iter <= times; ++iter)
     {
-        scanf("%d", &n);
+        scanf("%d%d", &n, &m);
         for(int i = 1; i <= n; ++i)
-            scanf("%d", &red[i]);
-        for(int i = 1; i <= n; ++i)
-            scanf("%d", &blue[i]);
-        for(int i = 1; i <= n; ++i)
-            for(int j = i; j <= n; ++j)
+            for(int j = 1; j <= m; ++j)
             {
-                if (i == j)
-                {
-                    dist[i][j] = 0;
-                    continue;
-                }
-                long long s1 = blue[i] ^ red[j];
-                long long s2 = blue[j] ^ red[i];
-                if (s1 < s2)
-                    dist[i][j] = dist[j][i] = s1;
-                else
-                    dist[i][j] = dist[j][i] = s2;
+                scanf("%d", &p[i][j]);
             }
-        /*for(int i = 1; i <= n; ++i)
-        {
-            for(int j = i; j <= n; ++j)
-                cout << dist[i][j] << " ";
-            cout << endl;
-        }*/
-        for(int i = 1; i <= n; ++i)
-            len[i] = 1000000000000;
-        for(int i = 1; i <= n; ++i)
-            vis[i] = false;
-        len[1] = 0;
-        cur = 1;
-        vis[1] = true;
-        ans = 0;
-        for(int k = 1; k < n; ++k)
-        {
-            for(int i = 1; i <= n; ++i)
-                if (len[i] > dist[cur][i])
-                    len[i] = dist[cur][i];
-            long long max_len = 10000000000000;
-            for(int i = 1; i <= n; ++i)
+        for(int x1 = 1; x1 <= n; ++x1)
+            for(int y1 = 1; y1 <= m; ++y1)
+                for(int x2 = x1; x2 <= n; ++x2)
+                    for(int y2 = y1; y2 <= m; ++y2)
+                        f[x1][y1][x2][y2] = 0;
+        for(int dx = 0; dx < n; ++dx)
+            for(int dy = 0; dy < m; ++dy)
             {
-                if (!vis[i] && len[i] < max_len)
-                {
-                    max_len = len[i];
-                    cur = i;
-                }
+                for(int x = 1; x + dx <= n; ++x)
+                    for(int y = 1; y + dy <= m; ++y)
+                    {
+                        f[x][y][x][y] = 0;
+                        if (dx == 0 && dy == 0)
+                        {
+                            s[x][y][x][y] = p[x][y];
+                            continue;
+                        }
+                        if (dx > 0)
+                        {
+                            int s1 = s[x][y][x][y+dy];
+                            int s2 = s[x+1][y][x+dx][y+dy];
+                            if (s1 < s2)
+                                s[x][y][x+dx][y+dy] = s1;
+                            else
+                                s[x][y][x+dx][y+dy] = s2;
+                            for(int i = 0; i < dx; ++i)
+                            {
+                                int tmp = f[x][y][x+i][y+dy] + f[x+i+1][y][x+dx][y+dy] + s[x][y][x+dx][y+dy];
+                                if (tmp > f[x][y][x+dx][y+dy])
+                                    f[x][y][x+dx][y+dy] = tmp;
+                            }
+                        }
+                        if (dy > 0)
+                        {
+                            int s1 = s[x][y][x+dx][y];
+                            int s2 = s[x][y+1][x+dx][y+dy];
+                            if (s1 < s2)
+                                s[x][y][x+dx][y+dy] = s1;
+                            else
+                                s[x][y][x+dx][y+dy] = s2;
+                            for(int i = 0; i < dy; ++i)
+                            {
+                                int tmp = f[x][y][x+dx][y+i] + f[x][y+i+1][x+dx][y+dy] + s[x][y][x+dx][y+dy];
+                                if (tmp > f[x][y][x+dx][y+dy])
+                                    f[x][y][x+dx][y+dy] = tmp;
+                            }
+                        }
+                    }
             }
-            vis[cur] = true;
-            ans += len[cur];
-        }
-        printf("Case #%d: %lld\n", iter, ans);
+        printf("Case #%d: %d\n", iter, f[1][1][n][m]);
     }
     return 0;
 }
